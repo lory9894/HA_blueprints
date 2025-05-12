@@ -60,12 +60,6 @@ triggers:
   entity_id: !input motion_entity
   from: "off"
   to: "on"
-condition:
-  condition: and
-  conditions:
-    - condition: numeric_state
-      entity_id: !input lux_entity
-      below: !input lux_level
 
 actions:
   - choose:

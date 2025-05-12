@@ -1,5 +1,5 @@
 blueprint:
-  name: Motion-activated Light
+  name: Motion-activated Light with lux sensor
   description: Turn on a light when motion is detected, with light sensor.
   domain: automation
   author: lorenzo
@@ -23,9 +23,11 @@ blueprint:
       name: light sensor
       selector:
         entity:
-          filter:
-            - device_class: Illuminance
-              domain: sensor
+          domain:
+            - sensor
+          device_class:
+            - illuminance
+          multiple: false
     no_motion_wait:
       name: Wait time
       description: Time to leave the light on after last motion is detected.

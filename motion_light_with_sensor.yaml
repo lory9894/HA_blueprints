@@ -68,9 +68,14 @@ condition:
       below: !input lux_level
 
 actions:
-  - alias: "Turn on the light"
-    action: light.turn_on
-    target: !input light_target
+  - choose:
+      - conditions:
+          - condition: numeric_state
+            entity_id: !input lux_entity
+            below: !input lux_level
+        sequence:
+          - action: light.turn_on
+            target: !input light_target
   - alias: "Wait until there is no motion from device"
     wait_for_trigger:
       trigger: state
